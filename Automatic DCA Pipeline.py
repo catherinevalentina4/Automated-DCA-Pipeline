@@ -1,37 +1,10 @@
 """
 Decline Curve Analysis - SINGLE WELL (generik, tinggal ganti FILE_PATH)
 
-@author: Catherine Valentina (revisi)
+@author: Catherine Valentina 
 
-PERUBAHAN UTAMA DARI VERSI SEBELUMNYA
---------------------------------------
-1) BUG FIX PENTING (penyebab utama overestimate/underestimate di semua sumur):
-   Sebelumnya, model Arps di-fit menggunakan "Time" ABSOLUT (hari sejak
-   tanggal data paling awal di seluruh riwayat sumur), tapi saat forecasting
-   dievaluasi memakai waktu LOKAL yang mulai dari 0 di awal window.
-   qi & Di yang dihasilkan curve_fit jadi terikat ke referensi waktu yang
-   SALAH ketika dipakai untuk forecast -> hasil forecast menyimpang dari
-   rate aktual di awal window (biasanya overestimate, dan makin parah
-   untuk window yang letaknya makin jauh dari awal dataset).
-   FIX: semua fitting & forecasting sekarang KONSISTEN pakai waktu lokal
-   (t=0 tepat di titik data pertama window yang dipakai fitting).
 
-2) PEMILIHAN SEGMEN SEKARANG BERBASIS STRUKTUR DATA, BUKAN PARAMETER HARI
-   YANG DI-HARDCODE:
-   Sebelumnya ada "RECENCY_WINDOW_DAYS" tetap yang harus disesuaikan manual
-   tiap sumur. Sekarang logikanya: SELALU mulai dari segmen paling akhir
-   (paling mencerminkan kondisi sumur SEKARANG). Kalau segmen itu terlalu
-   pendek atau tidak menunjukkan trend decline yang valid, baru digabung
-   mundur dengan segmen sebelumnya, dan begitu seterusnya sampai ketemu
-   rentang data yang valid untuk fitting. Ini otomatis menyesuaikan diri
-   ke panjang & pola riwayat data sumur apa pun, tanpa perlu tuning manual.
-
-3) Validasi otomatis: script mencetak perbandingan rate PREDIKSI vs AKTUAL
-   di awal window, akhir window, dan di tanggal data terakhir yang tersedia,
-   supaya penyimpangan (kalau ada) langsung kelihatan di log, bukan baru
-   ketahuan dari bentuk plot.
-
-CARA PAKAI
+CARA PAKAI (how to use)
 ----------
 Cukup ubah FILE_PATH ke lokasi file Excel sumur yang ingin dianalisis
 (kolom wajib: "Date" dan "Oil bbl/d"), lalu OUTPUT_PATH untuk hasilnya.
@@ -57,8 +30,8 @@ from sklearn.metrics import mean_squared_error, r2_score
 
 import argparse
 
-DEFAULT_FILE_PATH = "data/sample/well_sample.xlsx"
-DEFAULT_OUTPUT_PATH = "DCA_Result_sample.xlsx"
+DEFAULT_FILE_PATH = r"data/sample/well_sample.xlsx"
+DEFAULT_OUTPUT_PATH = r"DCA_Result_sample.xlsx"
 
 parser = argparse.ArgumentParser(description="Automated Decline Curve Analysis (single well)")
 parser.add_argument("--file", dest="file_path", default=DEFAULT_FILE_PATH,
