@@ -5,7 +5,7 @@ __pycache__/
 venv/
 .env
 
-# Data produksi & hasil analisis -- JANGAN diupload (data perusahaan/rahasia)
+# Data produksi & hasil analisis --
 data/
 *.xlsx
 *.xls
