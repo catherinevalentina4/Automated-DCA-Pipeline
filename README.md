@@ -1,14 +1,8 @@
 # Automated Decline Curve Analysis (DCA) untuk Sumur Minyak
 
-Pipeline Python untuk menganalisis riwayat produksi minyak per sumur secara otomatis:
-membersihkan data, mendeteksi shut-in & kemungkinan workover, mensegmentasi riwayat
-produksi menjadi beberapa rezim, memilih rezim yang paling merepresentasikan kondisi
-sumur *saat ini*, lalu fitting model decline Arps (Exponential / Harmonic / Hyperbolic)
-untuk forecasting rate produksi hingga economic limit dan menghitung EUR (Estimated
-Ultimate Recovery).
+Python pipeline untuk melakukan analisis Decline Curve Analysis (DCA) secara otomatis pada data riwayat produksi minyak per sumur. Pipeline ini melakukan preprocessing data, mendeteksi anomali operasional, mengidentifikasi decline intervals yang representatif secara matematis, melakukan fitting model Arps (Exponential, Harmonic, Hyperbolic), kemudian menghasilkan forecasting produksi serta Estimated Ultimate Recovery (EUR).
 
-Dibuat untuk kebutuhan analisis internal pada data produksi lapangan migas, dengan
-tujuan mengurangi waktu analisis manual yang biasanya dilakukan satu per satu per sumur.
+Pipeline dikembangkan untuk kebutuhan analisis internal data produksi lapangan migas dengan tujuan mengurangi pekerjaan manual yang biasanya dilakukan satu per satu pada setiap sumur.
 
 > **Catatan data:** Contoh/skrip di repo ini menggunakan data sintetis untuk demonstrasi.
 
