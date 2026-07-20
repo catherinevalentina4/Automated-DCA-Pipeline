@@ -11,7 +11,6 @@ Dibuat untuk kebutuhan analisis internal pada data produksi lapangan migas, deng
 tujuan mengurangi waktu analisis manual yang biasanya dilakukan satu per satu per sumur.
 
 > **Catatan data:** Contoh/skrip di repo ini menggunakan data sintetis untuk demonstrasi.
-> Data produksi aktual bersifat rahasia dan tidak disertakan.
 
 ---
 
