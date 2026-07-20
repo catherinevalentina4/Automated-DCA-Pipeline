@@ -23,7 +23,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 # KONFIGURASI
 # =====================================================================
 # Bisa diisi lewat argumen command line:
-#   python dca_single_well.py --file data/sample/well_sample.xlsx --output result.xlsx
+#   python Automatic DCA Pipeline.py --file data/sample/well_sample.xlsx --output result.xlsx
 # Kalau dijalankan langsung di Spyder/IDE tanpa argumen, dipakai nilai
 # DEFAULT_FILE_PATH / DEFAULT_OUTPUT_PATH di bawah -- ganti sesuai lokasi
 # file Anda sendiri (folder ini TIDAK ikut diupload ke GitHub, lihat .gitignore).
